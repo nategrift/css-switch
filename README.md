@@ -8,12 +8,15 @@ Feel free to use in your projects.  I created this as a experiement to give me a
 
 ## Example
 Gif Example
+
 ![Switch Example](./images/example.gif)
 
 Default Switch
+
 ![Default Switch](./images/default-switch.png)
 
 Active Switch
+
 ![Active Switch](./images/active-switch.png)
 
 ## Contributing
