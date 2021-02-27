@@ -1,0 +1,114 @@
+
+/* Root variables */
+:root {
+--switch-accent: #d7ddea;
+--switch-default: #504f5d;
+--switch-background: #25242e;
+--switch-active: #03b775;
+--switch-inset-gradient: rgba(0, 0, 0, 0.4);
+}
+
+/* Default values. Would remove if combining with another project */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Gill Sans', sans-serif;
+  font-weight: 300;
+  color: var(--switch-accent)
+}
+html {
+  background-color: var(--switch-background)
+}
+
+
+/* Hides the default HTML switch */
+.switch input[type="checkbox"] {
+  position: absolute;
+  left: -5000px;
+}
+
+/* Remove this if using inside a object */
+/* This is used to center button in middle of screen */
+.switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 20px;
+  line-height: 26px; /* Center tex as much as possible in the container beside the button */
+}
+
+/* The switch container styles, the label element */
+.switch .switch-con {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+/* Set Default margin for all spans */
+.switch span {
+  margin: 5px;
+}
+
+/* This is the background of the switch */
+.switch-item:last-child {
+  position: relative;
+  display: inline-block;
+  background-color: var(--switch-default);
+  width: 56px;
+  height: 28px;
+  border-radius: 50px;
+  box-shadow: inset 0 0 5px var(--switch-inset-gradient);
+  transition: transform 0.3s, background-color 0.5s;
+}
+
+/* Set content to null and position to absolute for each */
+.switch-item:last-child::before,
+.switch-item:last-child::after {
+  content: "";
+  position: absolute;
+}
+
+/* This is the white circle that moves */
+.switch-item:last-child::before {
+  width: 26px;
+  height: 26px;
+  background-color: var(--switch-accent);
+  top: 0;
+  left: 0;
+  margin: 1px;
+  border-radius: 50px;
+  transition: transform 0.3s;
+  z-index: 1;
+}
+/* This is the "1" or "0" whether the switch is active or not */
+.switch-item:last-child::after {
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  content: '0';
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 18px;
+  transition: transform 0.3s;
+  color: var(--switch-background)
+}
+
+/* The classes below are when checkbox gets active, I.e. When switch is active */
+
+/* Moving the white circle */
+input[type="checkbox"]:checked + label .switch-item:last-child::before {
+  transform: translateX(28px);
+}
+/* Change background of switch to active */
+input[type="checkbox"]:checked + label .switch-item:last-child {
+  background: var(--switch-active);
+}
+/* Switch text swtiching to "1" instead of "0"*/
+input[type="checkbox"]:checked + label .switch-item:last-child::after {
+  content: '1';
+  left: 11px;
+  transform: translateY(-50%);
+  color: var(--switch-accent)
+}
